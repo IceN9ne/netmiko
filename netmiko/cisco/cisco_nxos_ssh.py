@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import re
 import time
 import os
-from netmiko.cisco_base_connection import CiscoSSHConnection
+from netmiko.cisco_base_connection import CiscoBaseConnection
 from netmiko.cisco_base_connection import CiscoFileTransfer
 
 
@@ -26,7 +26,7 @@ class CiscoNxosBase(CiscoBaseConnection):
 
     def check_config_mode(self, check_string=")#", pattern="#"):
         """Checks if the device is in configuration mode or not."""
-        return super(CiscoNxosSSH, self).check_config_mode(
+        return super(CiscoNxosBase, self).check_config_mode(
             check_string=check_string, pattern=pattern
         )
 
