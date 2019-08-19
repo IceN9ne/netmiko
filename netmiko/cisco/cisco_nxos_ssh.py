@@ -7,7 +7,7 @@ from netmiko.cisco_base_connection import CiscoSSHConnection
 from netmiko.cisco_base_connection import CiscoFileTransfer
 
 
-class CiscoNxosSSH(CiscoSSHConnection):
+class CiscoNxosBase(CiscoBaseConnection):
     def session_preparation(self):
         """Prepare the session after the connection has been established."""
         self._test_channel_read(pattern=r"[>#]")
@@ -30,6 +30,15 @@ class CiscoNxosSSH(CiscoSSHConnection):
             check_string=check_string, pattern=pattern
         )
 
+class CiscoNxosSSH(CiscoNxosBase):
+     """Cisco NXOS SSH driver."""
+
+     pass
+
+class CiscoNxosTelnet(CiscoNxosBase):
+    """Cisco NXOS Telnet driver."""
+
+    pass
 
 class CiscoNxosFileTransfer(CiscoFileTransfer):
     """Cisco NXOS SCP File Transfer driver."""
